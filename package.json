@@ -1,0 +1,41 @@
+{
+  "name": "express_backend",
+  "version": "1.0.0",
+  "description": "A backend for backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node express_backend/server.js",
+    "start-dev": "nodemon express_backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Ashraf-Raneem/express_backend.git"
+  },
+  "author": "Bengal Software ltd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Ashraf-Raneem/express_backend/issues"
+  },
+  "homepage": "https://gitlab.com/Ashraf-Raneem/express_backend#readme",
+  "dependencies": {
+    "adm-zip": "^0.4.16",
+    "aws-sdk": "^2.768.0",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "get-video-duration": "^3.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^7.5.2",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "ngrok": "^3.4.0",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "sslcommerz-nodejs": "^1.0.8",
+    "validator": "^13.1.17"
+  }
+}
