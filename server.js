@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Middlewares
-app.use(express.static(path.join(__dirname,"..","build")));
+app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(cors());
 
 //adding route
@@ -66,8 +66,8 @@ app.post('/payment/success', function (req, res) {
 */
 
 // Set static folder
-app.use(express.static(path.join(__dirname, "..","bengal_frontebd","build")));
-app.use(express.static(path.join(__dirname, "..","bengal_superadmin_dashboard", "build")));
+app.use(express.static(path.join(__dirname, "..", "bengal_frontebd", "build")));
+app.use(express.static(path.join(__dirname, "..", "bengal_superadmin_dashboard", "build")));
 //app.use(express.static(path.join(__dirname, ".","pages","payment.html")));
 
 //using uploads route
@@ -80,14 +80,18 @@ app.use("/payment", (req,res) => {
 })
 */
 
-app.get("/admin",(req,res) => {
+app.get("/admin", (req, res) => {
   res.sendFile(path.resolve(__dirname, "..", "bengal_superadmin_dashboard", "build", "index.html"));
 })
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname,"..",'bengal_frontebd','build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, "..", 'bengal_frontebd', 'build', 'index.html'));
 });
-  
+
+app.get('/', (req, res) => {
+  res.send("Themezone Server is Running..")
+})
+
 
 
 const port = process.env.PORT || 5000;

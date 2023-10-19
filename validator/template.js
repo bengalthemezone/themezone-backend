@@ -7,7 +7,7 @@ module.exports = function validateTemplateInput(data) {
   data.category = !isEmpty(data.category) ? data.category : "";
   data.title = !isEmpty(data.title) ? data.title : "";
   data.price = !isEmpty(data.price) ? data.price : "";
-  data.description = !isEmpty(data.description) ? data.description : "";
+  // data.description = !isEmpty(data.description) ? data.description : "";
 
   if (Validator.isEmpty(data.category)) {
     errors.category = "A category is required";
@@ -23,9 +23,9 @@ module.exports = function validateTemplateInput(data) {
   if (Validator.isEmpty(data.title)){
       errors.title = "title is required";
   }
-  if (Validator.isEmpty(data.description)) {
-    errors.description = "Description for the service is required";
-  }
+  // if (Validator.isEmpty(data.description)) {
+  //   errors.description = "Description for the service is required";
+  // }
   
   if (!isEmpty(data.liveDemo)) {
     if (!Validator.isURL(data.liveDemo)) {

@@ -117,23 +117,30 @@ router.get("/test", (req, res) => {
 // @route GET api/template
 // @desc Get all the templates
 // @access Public
-router.get("/", (req, res) => {
+router.get("/", async(req, res) => {
     const errors = {};
+try {
+    const template = await Template.find().sort({ date: -1 });
+    res.json(template);
+} catch (error) {
 
-    Template.find()
-        .then((template) => {
-            if (!template) {
-                error.noTemplate = "There are no templates"
-                res.status(400).json(errors)
-            }
-            else {
-                console.log("template", template)
-                res.json(template);
-            }
-        })
-        .catch(err => {
-            res.status(400).json(err);
-        })
+    res.status(400).json(error);
+}
+    // Template.find().sort({ createdAt: -1 })
+    //     .then((template) => {
+    //         if (!template) {
+    //             error.noTemplate = "There are no templates"
+    //             res.status(400).json(errors)
+    //         }
+    //         else {
+    //             res.json(template);
+    //         }
+    //     })
+    //     .catch(err => {
+    //         res.status(400).json(err);
+    //     })
+
+        
 })
 // @route GET api/template/query
 // @desc GET a template via field
@@ -223,7 +230,7 @@ router.post(
         if (req.body.description) templateFields.description = req.body.description;
         if (req.body.liveDemo) templateFields.liveDemo = req.body.liveDemo;
         //if (req.files.templateFiles[0].path) templateFields.templateFiles = req.files.templateFiles[0].path;
-        if (req.file.path) templateFields.coverPicture = req.file.path;
+        if (req.file?.path) templateFields.coverPicture = req.file.path;
         if (req.body.features) templateFields.features = req.body.features;
         if (req.body.additionalFeatures) templateFields.additionalFeatures = req.body.additionalFeatures;
         if (req.body.functionalities) templateFields.functionalities = req.body.functionalities;
