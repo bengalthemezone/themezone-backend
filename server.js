@@ -80,13 +80,13 @@ app.use("/payment", (req,res) => {
 })
 */
 
-app.get("/admin", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", "bengal_superadmin_dashboard", "build", "index.html"));
-})
+// app.get("/admin", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "..", "bengal_superadmin_dashboard", "build", "index.html"));
+// })
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", 'bengal_frontebd', 'build', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "..", 'bengal_frontebd', 'build', 'index.html'));
+// });
 
 app.get('/', (req, res) => {
   res.send("Themezone Server is Running..")
