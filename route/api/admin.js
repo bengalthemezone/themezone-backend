@@ -20,7 +20,7 @@ router.get("/test", (req, res) => res.json({ msg: "admins Works" }));
 // @route get api/admins/all
 // @desc GET all the admins
 // @access Public
-router.get("/all",(req,res) => {
+router.get("/all", (req, res) => {
   const errors = {};
 
   Admin.find()
@@ -95,14 +95,14 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, admin.password).then((isMatch) => {
       if (isMatch) {
         //admin matched!
-        const payload = { id: admin.id, name: admin.name}; //Creating JWT payload
+        const payload = { id: admin.id, name: admin.name }; //Creating JWT payload
         //sign token
         jwt.sign(
           payload,
           keys.secretOrKey,
           { expiresIn: 28800 },
           (err, token) => {
-            res.json({ success: true, token: "Bearer " + token });
+            res.json({ success: true, token: "Bearer " + token, admin: { name: admin.name, email: admin.email } });
           }
         );
       } else {

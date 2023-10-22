@@ -204,7 +204,7 @@ router.get("/:id", async (req, res) => {
 // @access Public
 router.post(
     "/",
-    passport.authenticate("jwt", { session: false }),
+    // passport.authenticate("jwt", { session: false }),
     upload.single("coverPicture"),
     (req, res) => {
         const { errors, isValid } = validateTemplateInput(req.body);
@@ -216,7 +216,7 @@ router.post(
         }
         const templateFields = {};
 
-        templateFields.user = req.user.id;
+        // templateFields.user = req.user.id;
         /*
             var zip = new AdmZip(req.files.templateFiles.path);
             zip.extractAllTo('../../uploads/', true);
@@ -285,18 +285,16 @@ router.post(
 // @route Delete api/template/:id
 // @desc Delete a template
 // @access Public
-router.delete("/:id", (req, res) => {
-    const errors = {}
-    Template
-        .findById(req.params.id)
-        .then((template) => {
-            if (!template) {
-                errors.noTemplate = "No template found";
-                res.status(404).json(errors);
-            }
-            template.remove().then((res) => res.send("Successful"));
+router.delete("/:id", async(req, res) => {
+    try {
+        const data = await Template.findByIdAndDelete({_id: req.params.id});
+        res.status(200).json({
+            success: true,
+            data: data
         })
-        .catch((err) => res.status(404).json(err));
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
 })
 
 // @route   POST api/template/activate/:id
