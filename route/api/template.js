@@ -60,7 +60,7 @@ router.post("/payment", (req, res) => {
 
     sslcommerz.init_transaction(req.body).then(response => {
         res.json(response.GatewayPageURL);
-        //console.log(post_body);
+        console.log(response.GatewayPageURL);
     }).catch(error => {
         res.json(error);
     })
